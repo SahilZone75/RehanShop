@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rehan Auto Service</title>
-    <!-- <link rel="icon" href="download.png" type="image/png"> -->
+    <title>Rehan Auto Parts</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2972/2972185.png" type="image/png">
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -30,10 +30,10 @@
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex items-center gap-8 text-white font-medium">
-          <a href="#" class="hover:text-yellow-400 transition">Home</a>
-          <a href="#" class="hover:text-yellow-400 transition">About</a>
-          <a href="#" class="hover:text-yellow-400 transition">Services</a>
-          <a href="#" class="hover:text-yellow-400 transition">Contact</a>
+          <a href="#home" class="hover:text-yellow-400 transition">Home</a>
+          <a href="#about" class="hover:text-yellow-400 transition">About</a>
+          <a href="#services" class="hover:text-yellow-400 transition">Services</a>
+          <a href="#contact" class="hover:text-yellow-400 transition">Contact</a>
 
           <!-- Button -->
           <a
@@ -59,10 +59,10 @@
         id="mobileMenu"
         class="hidden md:hidden flex flex-col items-center gap-5 py-5 bg-black text-white border-t border-yellow-400"
       >
-        <a href="#" class="hover:text-yellow-400">Home</a>
-        <a href="#" class="hover:text-yellow-400">About</a>
-        <a href="#" class="hover:text-yellow-400">Services</a>
-        <a href="#" class="hover:text-yellow-400">Contact</a>
+        <a href="#home" class="hover:text-yellow-400">Home</a>
+        <a href="#about" class="hover:text-yellow-400">About</a>
+        <a href="#services" class="hover:text-yellow-400">Services</a>
+        <a href="#contact" class="hover:text-yellow-400">Contact</a>
 
         <a
           href="#"
@@ -75,7 +75,8 @@
     </nav>
 
     <!-- //! Home Page  -->
-    <div
+    <div 
+    id="home"
     data-aos="zoom-in"
       class="mt-10 h-screen relative flex items-center justify-center text-center text-white"
     >
@@ -111,7 +112,7 @@
     </div>
 
     <!-- //! About page  -->
-    <section class="bg-black text-white py-20 px-5 relative overflow-hidden">
+    <section id="about" class="bg-black text-white py-20 px-5 relative overflow-hidden">
 
   <!-- Glow Effect -->
   <div class="absolute -top-10 -left-10 w-72 h-72 bg-yellow-400 opacity-10 blur-3xl rounded-full"></div>
@@ -204,7 +205,7 @@
   </div>
 
   <!-- //! Services  -->
-<section class="bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white py-20 px-5">
+<section id="services" class="bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white py-20 px-5">
   <!-- Soft Glow -->
   <div class="absolute top-0 left-0 w-72 h-72 bg-yellow-400 opacity-10 blur-3xl rounded-full"></div>
   <div class="absolute bottom-0 right-0 w-72 h-72 bg-yellow-400 opacity-10 blur-3xl rounded-full"></div>
@@ -298,7 +299,7 @@
 </section>
   
     <!-- //! Contact Page  -->
-     <section class="bg-black text-white py-20 px-2 md:px-8">
+     <section id="contact" class="bg-black text-white py-20 px-2 md:px-8">
 
   <div class="w-full text-center">
 

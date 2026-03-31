@@ -3,7 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rehan Auto Service - Bill Generator</title>
+    <title>Rehan Auto Parts - Bill Generator</title>
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/512/2972/2972185.png"
+      type="image/png"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,7 +21,7 @@
 
   <body class="bg-gray-100 p-3 sm:p-6 md:p-10">
     <!-- 🏍️ Header -->
-    <div class="text-center mb-6">
+    <div data-aos="fade-up" class="text-center mb-6">
       <h1 class="text-2xl sm:text-3xl font-bold">Rehan Auto Service</h1>
       <p class="text-sm sm:text-base text-gray-600">
         Infront of Yashmay Public School, Gonda (UP)
@@ -298,5 +305,8 @@
         doc.save(`Bill.pdf`);
       }
     </script>
+    <script>
+  AOS.init();
+</script>
   </body>
 </html>
