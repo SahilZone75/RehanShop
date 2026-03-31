@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rehan Auto Service - Bill Generator</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  </head>
+
+  <body class="bg-gray-100 p-3 sm:p-6 md:p-10">
+    <!-- 🏍️ Header -->
+    <div class="text-center mb-6">
+      <h1 class="text-2xl sm:text-3xl font-bold">Rehan Auto Service</h1>
+      <p class="text-sm sm:text-base text-gray-600">
+        Infront of Yashmay Public School, Gonda (UP)
+      </p>
+      <p class="text-sm font-semibold">📞 8115901642</p>
+    </div>
+
+    <!-- 👤 Customer Info -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+      <input
+        id="customer"
+        class="p-3 border rounded w-full text-sm"
+        placeholder="Customer Name"
+      />
+      <input
+        id="vehicle"
+        class="p-3 border rounded w-full text-sm"
+        placeholder="Vehicle Name"
+      />
+      <input id="date" type="date" class="p-3 border rounded w-full text-sm" />
+    </div>
+
+    <!-- ➕ Add Item -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+      <input
+        id="item"
+        class="p-3 border rounded w-full text-sm"
+        placeholder="Item Name"
+      />
+      <input
+        id="qty"
+        type="number"
+        class="p-3 border rounded w-full text-sm"
+        placeholder="Qty"
+      />
+      <input
+        id="price"
+        type="number"
+        class="p-3 border rounded w-full text-sm"
+        placeholder="Price"
+      />
+      <button
+        onclick="addItem()"
+        class="bg-black text-white p-3 rounded font-bold hover:bg-gray-800 transition"
+      >
+        Add Item
+      </button>
+    </div>
+
+    <!-- 📋 Table Wrapper (Jo mobile pe scroll hoga) -->
+    <div class="bg-white shadow-md rounded-lg overflow-x-auto">
+      <table class="w-full border-collapse min-w-[600px]">
+        <thead>
+          <tr class="bg-gray-800 text-white">
+            <th class="p-3 text-left">Item</th>
+            <th class="p-3 text-center">Qty</th>
+            <th class="p-3 text-center">Price</th>
+            <th class="p-3 text-center">Total</th>
+            <th class="p-3 text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody" class="divide-y">
+          <!-- Items yahan add honge -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 💰 Total -->
+    <div class="flex justify-end mt-4">
+      <h2 class="text-xl font-bold bg-white p-3 border rounded shadow-sm">
+        Total: ₹<span id="total">0</span>
+      </h2>
+    </div>
+
+    <!-- 📄 PDF Button -->
+    <div class="text-center mt-8">
+      <button
+        onclick="generatePDF()"
+        class="bg-yellow-400 hover:bg-yellow-500 px-10 py-3 rounded-md font-bold shadow transition w-full sm:w-auto"
+      >
+        Download PDF
+      </button>
+    </div>
+
+    <script>
+      let items = [];
+      let total = 0;
+
+      function addItem() {
+        let name = document.getElementById("item").value;
+        let qty = Number(document.getElementById("qty").value);
+        let price = Number(document.getElementById("price").value);
+
+        if (!name || !qty || !price) {
+          alert("Please fill all fields");
+          return;
+        }
+
+        let itemTotal = qty * price;
+
+        items.push({ name, qty, price, itemTotal });
+
+        // clear inputs
+        document.getElementById("item").value = "";
+        document.getElementById("qty").value = "";
+        document.getElementById("price").value = "";
+
+        renderTable();
+      }
+
+      function deleteItem(index) {
+        items.splice(index, 1);
+        renderTable();
+      }
+
+      function editItem(index) {
+        let item = items[index];
+
+        document.getElementById("item").value = item.name;
+        document.getElementById("qty").value = item.qty;
+        document.getElementById("price").value = item.price;
+
+        items.splice(index, 1);
+        renderTable();
+      }
+
+      function renderTable() {
+        let tableBody = document.getElementById("tableBody");
+        tableBody.innerHTML = "";
+        total = 0;
+
+        items.forEach((item, index) => {
+          total += item.itemTotal;
+
+          tableBody.innerHTML += `
+      <tr class="border-b text-center hover:bg-gray-100">
+        <td class="p-3">${item.name}</td>
+        <td class="p-3">${item.qty}</td>
+        <td class="p-3">${item.price}</td>
+        <td class="p-3">${item.itemTotal}</td>
+        <td class="p-3 space-x-2">
+          <button onclick="editItem(${index})" class="bg-blue-500 text-white px-2 py-1 rounded">Edit</button>
+          <button onclick="deleteItem(${index})" class="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
+        </td>
+      </tr>
+    `;
+        });
+
+        document.getElementById("total").innerText = total;
+      }
+
+      function generatePDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        let customer = document.getElementById("customer").value;
+        let vehicle = document.getElementById("vehicle").value;
+        let date = document.getElementById("date").value;
+
+        // --- 1. BIKE LOGO / ICON (Unique Style like Image) ---
+        // Ek simple bike outline draw kar rahe hain (Unique feel ke liye)
+        doc.setLineWidth(0.5);
+        doc.setDrawColor(0);
+        // Wheels
+        doc.circle(25, 25, 4);
+        doc.circle(37, 25, 4);
+        // Body Lines
+        doc.line(25, 25, 30, 20);
+        doc.line(30, 20, 37, 20);
+        doc.line(37, 20, 37, 25);
+        doc.line(30, 20, 28, 17); // Handle
+
+        // --- 2. HEADER SECTION (Traditional Style) ---
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(10);
+        doc.text("BILL / CASH MEMO", 90, 15);
+
+        doc.setFontSize(9);
+        doc.text("Mob. : 8115901642", 160, 15);
+
+        // Main Title
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(24);
+        doc.text("REHAN AUTO SERVICE", 110, 28, { align: "center" });
+
+        // Tagline (Black Box)
+        doc.setFontSize(10);
+        doc.setFillColor(0, 0, 0);
+        doc.rect(50, 32, 120, 6, "F");
+        doc.setTextColor(255, 255, 255);
+        doc.text("ALL BIKE SERVICE STATION & SPARES", 110, 36.5, {
+          align: "center",
+        });
+
+        doc.setTextColor(0, 0, 0);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9);
+        doc.text("Infront of Yashmay Public School, Gonda, UP", 110, 43, {
+          align: "center",
+        });
+
+        // --- 3. CUSTOMER & VEHICLE INFO (Changes applied here) ---
+        doc.setLineWidth(0.2);
+        doc.setFontSize(10);
+
+        doc.text("Bill No. ....................", 20, 55);
+        doc.text(`Date: ${date}`, 150, 55);
+
+        // 'To' ki jagah 'Name'
+        doc.text(`Name: ${customer.toUpperCase()}`, 20, 65);
+        doc.line(32, 66, 190, 66);
+
+        // 'Vehicle No' ki jagah 'Vehicle' aur Meter Reading hata di gayi hai
+        doc.text(`Vehicle: ${vehicle.toUpperCase()}`, 20, 75);
+        doc.line(34, 76, 110, 76);
+        doc.text("Type: .......................................", 115, 75);
+
+        // --- 4. TABLE GRID (Exactly like Image) ---
+        let yStart = 85;
+        let tableHeight = 140; // Space for totals below
+
+        doc.rect(20, yStart, 175, tableHeight); // Outer Border
+        doc.line(20, yStart + 10, 195, yStart + 10); // Header Line
+
+        doc.setFont("helvetica", "bold");
+        doc.text("S.No.", 22, yStart + 7);
+        doc.text("PARTICULARS", 75, yStart + 7);
+        doc.text("Rate", 152, yStart + 7);
+        doc.text("Amount Rs.", 172, yStart + 7);
+
+        // Vertical Lines (Grid)
+        doc.line(32, yStart, 32, yStart + tableHeight); // After S.No
+        doc.line(150, yStart, 150, yStart + tableHeight + 10); // After Particulars
+        doc.line(170, yStart, 170, yStart + tableHeight + 10); // After Rate
+
+        // --- 5. ITEMS LISTING ---
+        let itemY = yStart + 17;
+        doc.setFont("helvetica", "normal");
+
+        items.forEach((item, index) => {
+          doc.text(String(index + 1), 24, itemY);
+          doc.text(item.name, 35, itemY);
+          doc.text(String(item.price), 158, itemY, { align: "right" });
+          doc.text(String(item.itemTotal), 190, itemY, { align: "right" });
+          itemY += 8;
+        });
+
+        // --- 6. TOTAL SECTION ---
+        let totalY = yStart + tableHeight;
+        doc.line(150, totalY, 195, totalY);
+        doc.setFont("helvetica", "bold");
+        doc.text("TOTAL", 152, totalY + 7);
+        doc.text(String(total), 190, totalY + 7, { align: "right" });
+
+        // --- 7. FOOTER ---
+        let footerY = totalY + 20;
+        doc.setFontSize(9);
+        doc.setFont("helvetica", "normal");
+        doc.text(
+          `TOTAL AMOUNT: ...................................................................................`,
+          20,
+          footerY,
+        );
+        doc.text("Authorised Signatory", 158, footerY + 15);
+
+        footerY += 10;
+        doc.setFontSize(8);
+        doc.text("E. & O. E.", 20, footerY);
+        doc.setFont("helvetica", "bold");
+        doc.text("For REHAN AUTO SERVICE", 150, footerY);
+
+        footerY += 5;
+        // --- Disclaimer Line ---
+        doc.setFontSize(7);
+        doc.setFont("helvetica", "italic");
+        let disclaimer =
+          "This is a computer-generated estimate/cash memo for internal record purposes only. It is not a Tax Invoice and cannot be used for any legal claims or insurance purposes. It holds the same value as a handwritten rough slip.";
+        let splitDisclaimer = doc.splitTextToSize(disclaimer, 160);
+        doc.text(splitDisclaimer, 20, footerY + 15);
+
+        doc.save(`Bill.pdf`);
+      }
+    </script>
+  </body>
+</html>

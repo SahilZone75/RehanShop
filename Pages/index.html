@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rehan Auto Service</title>
+    <!-- <link rel="icon" href="download.png" type="image/png"> -->
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  </head>
+
+  <body class="bg-gray-900">
+    <!--//! Navbar -->
+    <nav data-aos="fade-down" class="fixed top-0 left-0 w-full z-50 bg-black shadow-lg">
+      <div
+        class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center"
+      >
+        <!-- Logo -->
+        <div class="text-white text-3xl font-bold flex items-center gap-2">
+          <span class="text-yellow-400 text-3xl">Rehan</span> Auto Parts
+          <i class="fas fa-motorcycle"></i>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-8 text-white font-medium">
+          <a href="#" class="hover:text-yellow-400 transition">Home</a>
+          <a href="#" class="hover:text-yellow-400 transition">About</a>
+          <a href="#" class="hover:text-yellow-400 transition">Services</a>
+          <a href="#" class="hover:text-yellow-400 transition">Contact</a>
+
+          <!-- Button -->
+          <a
+            href="bill.html"
+            class="bg-yellow-400 text-black px-4 py-2 rounded-full font-semibold hover:bg-white transition shadow-md flex items-center gap-2"
+          >
+            <i class="fas fa-file-invoice"></i>
+            Generate Bill
+          </a>
+        </div>
+
+        <!-- Hamburger -->
+        <div
+          class="md:hidden text-yellow-400 text-3xl cursor-pointer"
+          onclick="toggleMenu()"
+        >
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden flex flex-col items-center gap-5 py-5 bg-black text-white border-t border-yellow-400"
+      >
+        <a href="#" class="hover:text-yellow-400">Home</a>
+        <a href="#" class="hover:text-yellow-400">About</a>
+        <a href="#" class="hover:text-yellow-400">Services</a>
+        <a href="#" class="hover:text-yellow-400">Contact</a>
+
+        <a
+          href="#"
+          class="bg-yellow-400 text-black px-5 py-3 rounded-full font-semibold flex items-center gap-2 shadow-md hover:bg-white transition"
+        >
+          <i class="fas fa-file-invoice"></i>
+          Generate Bill
+        </a>
+      </div>
+    </nav>
+
+    <!-- //! Home Page  -->
+    <div
+    data-aos="zoom-in"
+      class="mt-10 h-screen relative flex items-center justify-center text-center text-white"
+    >
+      <!-- Background Image -->
+      <div class="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1558981806-ec527fa84c39"
+          class="w-full h-full object-cover blur-sm"
+        />
+        <div class="absolute inset-0 bg-black/70"></div>
+      </div>
+
+      <!-- Content -->
+      <div class="relative z-10 px-5">
+        <h1 class="text-3xl md:text-5xl font-bold text-yellow-400 mb-4">
+          Welcome to Rehan Auto Parts
+        </h1>
+
+        <h4 class="text-lg">Your Bike, Our Responsibility</h4>
+        <p class="text-lg md:text-xl text-gray-300 mb-6">
+          Fast • Reliable • Genuine Auto Parts & Billing System
+        </p>
+
+        <!-- Button -->
+        <a
+          href="bill.html"
+          class="bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold flex items-center gap-2 justify-center mx-auto w-fit hover:bg-white transition shadow-lg"
+        >
+          <i class="fas fa-file-invoice"></i>
+          Generate Bill
+        </a>
+      </div>
+    </div>
+
+    <!-- //! About page  -->
+    <section class="bg-black text-white py-20 px-5 relative overflow-hidden">
+
+  <!-- Glow Effect -->
+  <div class="absolute -top-10 -left-10 w-72 h-72 bg-yellow-400 opacity-10 blur-3xl rounded-full"></div>
+  <div class="absolute bottom-0 right-0 w-72 h-72 bg-yellow-400 opacity-10 blur-3xl rounded-full"></div>
+
+  <div class="max-w-6xl mx-auto relative z-10">
+
+    <!-- Heading -->
+    <h2 data-aos="fade-up" class="text-3xl md:text-5xl font-bold text-center text-yellow-400 mb-6">
+      About
+    </h2>
+
+    <!-- Sub Heading -->
+    <p data-aos="fade-up" data-aos-delay="100" class="text-center text-gray-400 max-w-3xl mx-auto mb-12 text-lg">
+      Rehan Auto Parts is your one-stop solution for all types of bike services, repairs, and deals. 
+      With years of experience, we ensure quality work, trusted service, and customer satisfaction.
+    </p>
+
+    <!-- Main Grid -->
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+
+      <!-- Left Content -->
+      <div data-aos="fade-right">
+        <h3 class="text-2xl font-semibold text-yellow-400 mb-4">
+          What We Do 🚀
+        </h3>
+
+        <p class="text-gray-300 mb-6">
+          We specialize in repairing all kinds of bikes — from normal daily-use bikes to high-performance sports bikes. 
+          Our skilled mechanics also handle battery rickshaws with proper diagnostics and care.
+        </p>
+
+        <p class="text-gray-300 mb-6">
+          Apart from repairs, we also deal in buying and selling old bikes. 
+          If you want to sell your bike or buy a reliable second-hand bike, we provide the best deals with trust and transparency.
+        </p>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-6 mt-6 text-center">
+          <div>
+            <h4 class="text-2xl font-bold text-yellow-400">1000+</h4>
+            <p class="text-sm text-gray-400">Bikes Repaired</p>
+          </div>
+          <div>
+            <h4 class="text-2xl font-bold text-yellow-400">500+</h4>
+            <p class="text-sm text-gray-400">Happy Clients</p>
+          </div>
+          <div>
+            <h4 class="text-2xl font-bold text-yellow-400">5+</h4>
+            <p class="text-sm text-gray-400">Years Experience</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Cards -->
+      <div data-aos="fade-left" class="grid sm:grid-cols-2 gap-6">
+
+        <div class="p-6 bg-white/5 rounded-xl border border-yellow-400/20 hover:bg-yellow-400 hover:text-black transition">
+          <i class="fas fa-motorcycle text-3xl mb-3"></i>
+          <h4 class="font-semibold text-lg mb-2">All Bikes Repair</h4>
+          <p class="text-sm">Normal bikes serviced quickly and efficiently.</p>
+        </div>
+
+        <div class="p-6 bg-white/5 rounded-xl border border-yellow-400/20 hover:bg-yellow-400 hover:text-black transition">
+          <i class="fas fa-bolt text-3xl mb-3"></i>
+          <h4 class="font-semibold text-lg mb-2">Sports Bikes</h4>
+          <p class="text-sm">High-speed machines handled with expert care.</p>
+        </div>
+
+        <div class="p-6 bg-white/5 rounded-xl border border-yellow-400/20 hover:bg-yellow-400 hover:text-black transition">
+          <i class="fas fa-battery-full text-3xl mb-3"></i>
+          <h4 class="font-semibold text-lg mb-2">Battery Rikshaw</h4>
+          <p class="text-sm">Complete e-rickshaw repair & maintenance.</p>
+        </div>
+
+        <div class="p-6 bg-white/5 rounded-xl border border-yellow-400/20 hover:bg-yellow-400 hover:text-black transition">
+          <i class="fas fa-handshake text-3xl mb-3"></i>
+          <h4 class="font-semibold text-lg mb-2">Buy & Sell Bikes</h4>
+          <p class="text-sm">Best deals for second-hand bikes available.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bottom Highlight Strip -->
+    <div class="mt-16 mb-10 bg-yellow-400 text-black text-center py-6 rounded-xl font-semibold text-lg shadow-lg">
+      Trusted Service • Genuine Parts • Affordable Pricing • Fast Delivery ⚡
+    </div>
+  </div>
+
+  <!-- //! Services  -->
+<section class="bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white py-20 px-5">
+  <!-- Soft Glow -->
+  <div class="absolute top-0 left-0 w-72 h-72 bg-yellow-400 opacity-10 blur-3xl rounded-full"></div>
+  <div class="absolute bottom-0 right-0 w-72 h-72 bg-yellow-400 opacity-10 blur-3xl rounded-full"></div>
+
+  <div class="max-w-6xl mx-auto relative z-10">
+
+    <!-- Heading -->
+    <h2 class="text-3xl md:text-5xl font-bold text-center text-yellow-400 mb-6">
+      Our Services
+    </h2>
+
+    <p class="text-center max-w-3xl mx-auto mb-12 text-gray-400 text-lg">
+      We provide high-quality repair and maintenance services for all types of vehicles 
+      with professional tools and experienced mechanics.
+    </p>
+
+    <!-- Services Grid -->
+   <div class="grid md:grid-cols-3 gap-8">
+
+  <!-- Card 1 (visible always) -->
+  <div data-aos="fade-up" data-aos-delay="100" class="group bg-black/60 backdrop-blur-md text-yellow-400 p-6 rounded-2xl border border-yellow-400/20 hover:scale-105 hover:bg-yellow-400 transition duration-300">
+    <i class="fas fa-motorcycle text-4xl mb-4 group-hover:text-black"></i>
+    <h3 class="text-xl font-semibold mb-2 group-hover:text-black">Bike Repair</h3>
+    <p class="text-yellow-300 text-sm mb-4 group-hover:text-black">
+      Complete servicing, engine repair, oil change and maintenance.
+    </p>
+    <span class="font-bold group-hover:text-black">Starting ₹199</span>
+  </div>
+
+  <!-- Card 2 (visible always) -->
+  <div data-aos="fade-up" data-aos-delay="100" class="group bg-black/60 backdrop-blur-md text-yellow-400 p-6 rounded-2xl border border-yellow-400/20 hover:scale-105 hover:bg-yellow-400 transition duration-300">
+    <i class="fas fa-bolt text-4xl mb-4 group-hover:text-black"></i>
+    <h3 class="text-xl font-semibold mb-2 group-hover:text-black">Sports Bikes</h3>
+    <p class="text-yellow-300 text-sm mb-4 group-hover:text-black">
+      Advanced repair and tuning for sports bikes.
+    </p>
+    <span class="font-bold group-hover:text-black">Starting ₹499</span>
+  </div>
+
+  <!-- Card 3 -->
+  <div data-aos="fade-up" data-aos-delay="100" class="group bg-black/60 backdrop-blur-md text-yellow-400 p-6 rounded-2xl border border-yellow-400/20 hover:scale-105 hover:bg-yellow-400 transition duration-300 hidden md:block extra-card">
+    <i class="fas fa-battery-full text-4xl mb-4 group-hover:text-black"></i>
+    <h3 class="text-xl font-semibold mb-2 group-hover:text-black">E-Rickshaw</h3>
+    <p class="text-yellow-300 text-sm mb-4 group-hover:text-black">
+      Battery and motor repair services.
+    </p>
+    <span class="font-bold group-hover:text-black">Starting ₹299</span>
+  </div>
+
+  <!-- Card 4 -->
+  <div data-aos="fade-up" data-aos-delay="100" class="group bg-black/60 backdrop-blur-md text-yellow-400 p-6 rounded-2xl border border-yellow-400/20 hover:scale-105 hover:bg-yellow-400 transition duration-300 hidden md:block extra-card">
+    <i class="fas fa-tools text-4xl mb-4 group-hover:text-black"></i>
+    <h3 class="text-xl font-semibold mb-2 group-hover:text-black">General Service</h3>
+    <p class="text-yellow-300 text-sm mb-4 group-hover:text-black">
+      Washing and full vehicle check-up.
+    </p>
+    <span class="font-bold group-hover:text-black">Starting ₹149</span>
+  </div>
+
+  <!-- Card 5 -->
+  <div data-aos="fade-up" data-aos-delay="100" class="group bg-black/60 backdrop-blur-md text-yellow-400 p-6 rounded-2xl border border-yellow-400/20 hover:scale-105 hover:bg-yellow-400 transition duration-300 hidden md:block extra-card">
+    <i class="fas fa-handshake text-4xl mb-4 group-hover:text-black"></i>
+    <h3 class="text-xl font-semibold mb-2 group-hover:text-black">Buy & Sell</h3>
+    <p class="text-yellow-300 text-sm mb-4 group-hover:text-black">
+      Best deals for second-hand bikes.
+    </p>
+    <span class="font-bold group-hover:text-black">Best Price</span>
+  </div>
+
+  <!-- Card 6 -->
+  <div data-aos="fade-up" data-aos-delay="100" class="group bg-black/60 backdrop-blur-md text-yellow-400 p-6 rounded-2xl border border-yellow-400/20 hover:scale-105 hover:bg-yellow-400 transition duration-300 hidden md:block extra-card">
+    <i class="fas fa-file-invoice text-4xl mb-4 group-hover:text-black"></i>
+    <h3 class="text-xl font-semibold mb-2 group-hover:text-black">Billing</h3>
+    <p class="text-yellow-300 text-sm mb-4 group-hover:text-black">
+      Instant bill generation system.
+    </p>
+    <span class="font-bold group-hover:text-black">Instant</span>
+  </div>
+
+</div>
+
+<!-- Read More Button -->
+<div class="text-center mt-10 md:hidden">
+  <button onclick="toggleCards()" id="readBtn"
+    class="bg-yellow-400 text-black px-6 py-2 rounded-full font-semibold hover:bg-white transition">
+    Read More
+  </button>
+</div>
+
+  </>
+</section>
+  
+    <!-- //! Contact Page  -->
+     <section class="bg-black text-white py-20 px-2 md:px-8">
+
+  <div class="w-full text-center">
+
+    <!-- Heading -->
+    <h2 data-aos="fade-up" class="text-3xl md:text-5xl font-bold text-yellow-400 mb-6">
+      Contact Us
+    </h2>
+
+    <p class="text-gray-400 max-w-2xl mx-auto mb-12">
+      Need bike services or want to purchase and sell your old bike ? Contact us directly on WhatsApp for quick response.
+    </p>
+
+    <!-- Info Cards -->
+    <div data-aos="zoom-in" class="grid md:grid-cols-3 gap-6 mb-12">
+
+      <div class="bg-gray-900 p-6 rounded-xl border border-yellow-400/20">
+        <i class="fas fa-phone text-yellow-400 text-2xl mb-3"></i>
+        <h3 class="font-semibold text-lg">Call Us</h3>
+        <p class="text-gray-400">+91 8115901642</p>
+      </div>
+
+      <div class="bg-gray-900 p-6 rounded-xl border border-yellow-400/20">
+        <i class="fas fa-map-marker-alt text-yellow-400 text-2xl mb-3"></i>
+        <h3 class="font-semibold text-lg">Location</h3>
+        <p class="text-gray-400">Infront of Yashmay Public School, Gonda, Uttar Pradesh <br>Pin Code: 271001</p>
+      </div>
+
+      <div class="bg-gray-900 p-6 rounded-xl border border-yellow-400/20">
+        <i class="fas fa-clock text-yellow-400 text-2xl mb-3"></i>
+        <h3 class="font-semibold text-lg">Working Hours</h3>
+        <p class="text-gray-400">9 AM - 8 PM</p>
+      </div>
+
+    </div>
+
+    <!-- WhatsApp Big Button -->
+     <a data-aos="fade-up" data-aos-delay="200" href="https://wa.me/918115901642" target="_blank"
+      class="inline-flex items-center gap-3 bg-green-600 px-8 py-4 rounded-full text-white text-lg font-semibold hover:bg-green-600 transition shadow-lg">
+      
+      <i class="fab fa-whatsapp text-2xl"></i>
+      Chat on WhatsApp
+    </a>
+
+    <!-- Small Note -->
+    <p class="text-gray-500 mt-6 text-sm">
+      Click the button to directly chat with us on WhatsApp 🚀
+    </p>
+
+  </div>
+
+</section>
+
+  <!-- //! footer section  -->
+   <footer data-aos="fade-up" class="bg-black text-gray-400 text-center py-4 border-t border-yellow-4">
+
+  <p class="text-md">
+    © 2026 All Rights Reserved | 
+    Designed by 
+    <a href="https://sahilsiddiqui.netlify.app/" target="_blank" 
+       class="text-yellow-400 hover:underline">
+       Sahil Siddiqui
+    </a>
+  </p>
+
+</footer>
+
+    <script>
+      function toggleMenu() {
+        document.getElementById("mobileMenu").classList.toggle("hidden");
+      }
+    </script>
+
+    <script>
+function toggleCards() {
+  const cards = document.querySelectorAll('.extra-card');
+  const btn = document.getElementById('readBtn');
+
+  cards.forEach(card => {
+    card.classList.toggle('hidden');
+  });
+
+  // Button text change
+  if (btn.innerText === "Read More") {
+    btn.innerText = "Show Less";
+  } else {
+    btn.innerText = "Read More";
+  }
+}
+</script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
+</script>
+  </body>
+</html>
